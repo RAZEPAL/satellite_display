@@ -11,7 +11,7 @@ function satelliteUpdate(app, key)
     sat = SatellitesCache.(key);
     h = SatellitesHandles.(key);
     
-    % === 1. 安全获取当前帧 ===
+    %  安全获取当前帧 
     if isempty(GlobalFrame) || GlobalFrame < 1
         GlobalFrame = 1;
     end
@@ -65,7 +65,7 @@ function satelliteUpdate(app, key)
     SatellitesHandles.(key) = h;
     
     
-    % === 3. 核心修复区 ===
+    % 修复区
     
     % 逻辑：只有“主控卫星”负责推进时间和刷新链路
     % 防止 N 颗卫星导致 N 倍速更新
@@ -83,7 +83,7 @@ function satelliteUpdate(app, key)
         % 只有主控卫星负责将时间 +1
         GlobalFrame = GlobalFrame + 1;
         
-        % ★★★ 循环播放逻辑 ★★★
+        %  循环播放逻辑 
         % 如果跑到底了，重置回开头，防止动画停止
         if GlobalFrame > maxLen
             GlobalFrame = 1;

@@ -13,7 +13,7 @@ for i = 1:numel(LinkTable)
     posA = [satA.x(k), satA.y(k), satA.z(k)];
     posB = [satB.x(k), satB.y(k), satB.z(k)];
 
-    % ===== 球面弧（已经验证可行）=====
+    % 球面弧绘制
     dirA = posA / norm(posA);
     dirB = posB / norm(posB);
     ang  = acos(max(min(dot(dirA,dirB),1),-1));
